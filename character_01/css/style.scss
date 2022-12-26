@@ -1,0 +1,1955 @@
+@charset "utf-8"; 
+@keyframes mousewheel{
+    0%{top:5px;opacity: 0;}
+
+    30%{top:10px;opacity: 1;}
+
+    100%{top:25px;opacity: 0;}
+}
+
+#wrap{
+    
+    .h-fixed{
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+
+    h1{
+        position: absolute;
+        left: 50%;
+        top: 100px;
+        // margin-left: js에서 동적으로 설정 ;
+        color: #fff;
+        font-size: 24px;
+        z-index: 100;
+    }
+    
+    .loading{
+        /* 전체화면 가득 채우기 */
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: #fff;
+        z-index: 10000;
+        >p{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 64px;
+            height: 64px;
+            margin: -32px 0 0 -32px;
+            background-image: url(./../images/loading.gif);
+            text-indent: -9999px;
+        }
+    }
+    
+    
+    header{
+        position: relative;
+        width: 100%;
+        min-width: 1100px;
+        // margin-bottom: 50px;
+        background-color: #fff;
+        border-bottom: 1px solid #eee;
+        z-index: 1000;
+        /* opacity: 0.3; */
+
+        &:after{
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            left: 0;
+            bottom: 1px;
+            border-bottom: 1px solid #eee;
+            content: '';
+        }
+        
+        >.container{
+            position: relative;
+            width: 1100px;
+            height: 66px;
+            margin: 0 auto;
+            z-index: 1000;
+
+            
+            >.logo{
+                background-image: url(./../images/logo.png);
+                background-position: 0 17px;
+                background-repeat: no-repeat;
+
+                >a{
+                    display: block;
+                    height: 66px;
+                    color: rgb(107, 107, 107);
+                    font-size: 18px;
+                    font-weight: 500;
+                    line-height: 66px;
+                    text-indent: 40px;
+                }
+            }
+        
+            >nav{
+                position: absolute;
+                right: 50px;
+                top: 0;
+        
+                >.gnb{
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: space-between;
+                    width: 600px;
+        
+                    >li{
+                        width: 100px;
+                        >a{
+                            display: block;
+                            height: 66px;
+                            line-height: 66px;
+                            text-align: center;
+                        }
+                        &.on>a,
+                        &:hover>a{
+                            color: #68c3a3;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    header~section{
+        padding-top: 100px;
+
+        >h2{
+            margin-bottom:70px;
+            color:#2c3e50;
+            font-size:50px;
+            line-height:50px;
+            text-align:center;
+            text-transform:uppercase;
+    
+            &:after{
+                display:block;
+                width:138px;
+                height:15px;
+                margin:30px auto 0;
+                background-image:url(./../images/deco_tit.png);
+                content:'';
+            }
+        }
+
+    }
+    
+    section{
+        width: 100%;
+        min-width: 1100px;
+
+
+    
+        &#visual{  
+            // display: none;//임시
+            
+            &:before{
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(27, 27, 27, 0.6);
+                content: '';
+            }
+
+            position: relative;
+            min-width: 1100px;
+            background-image: url(./../images/visual.png);
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+    
+            >.intro{
+                position: absolute;
+                left: 0;
+                top: 50%;
+                width: 100%;
+                text-align: center;
+                //border: 1px solid #ff0;
+
+                >h2{
+                    margin-bottom: 16px;
+                    color: #52b3d9;
+                    font-size: 60px;
+                    text-transform: uppercase;
+                    >span{color: #68c3a3;}
+                }
+
+                >p{
+                    color: #f7f7f7;
+                    letter-spacing: 1px;
+                }
+
+                >.myico{
+                    display: flex;
+                    justify-content: space-between;
+                    width: 320px;
+                    margin: 60px auto 0;
+
+
+                    >span{
+                        display: block;
+                        width: 40px;
+                        border: 1px solid #fff;
+                        border-radius: 3px;
+                        transform: rotate(45deg);
+                        transition: all 0.6s;
+
+                        &:hover{
+                            background-color: #68c3a3;
+                            border-color: transparent;
+                        }
+
+                        >i{
+                            display: block;
+                            height: 40px;
+                            color: #fff;
+                            font-size: 18px;
+                            line-height: 40px;
+                            text-align: center;
+                            transform: rotate(-45deg);
+                        }
+                    }
+                
+                }
+            }
+            
+            >.mouse{
+                position: absolute;
+                left: 50%;
+                bottom: 40px;
+                width: 30px;
+                height: 50px;
+                margin-left: -15px;
+                border: 2px solid #fff;
+                border-radius: 15px;
+                box-sizing: border-box;
+
+                >.wheel{
+                    position: absolute;
+                    left: 50%;
+                    top: 10px;
+                    width: 4px;
+                    height: 10px;
+                    margin-left: -2px;
+                    text-indent: -9999px;
+                    background-color: #fff;
+                    border-radius: 2px;
+
+                    animation: mousewheel 1s linear infinite;
+                }
+            }
+        }
+
+
+        &#aboutme{    
+            // display: none;//임시        
+            >article{
+                width: 1100px;
+                margin: 0 auto;                
+            }
+
+            >.visual{
+                background-image: url(../images/aboutme/aboutmeVisual01.png);
+                // border: 1px solid #000;
+                
+                >ol{
+                    display: flex;
+                    justify-content: space-between;
+                    position: relative;
+                    width: 1100px;
+                    height: 495px;
+                    margin: 0 auto;
+                    
+                    >li{
+                        overflow: hidden;
+                        position: relative;
+                        width: calc(1100px / 3 - 2px);
+                        height: 100%;
+                        color: #fff;
+    
+                        &:before{
+                            display: block;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba(17,17,17,0.2);
+                            content: '';
+                        }
+    
+                        &:after{
+                            display: block;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba(17,17,17,0.2);
+                            opacity: 0;
+                            transition: all 0.3s;
+                            content: '';
+                        }
+    
+                        &:hover:after{
+                            opacity: 1;
+                        }
+    
+                        >h3,
+                        >p{
+                            position: absolute;
+                            left: 50%;
+                            text-align: center;
+                            z-index: 100;
+                        }
+    
+                        >h3{
+                            top: 330px;
+                            width: 200px;
+                            margin-left: -100px;
+                            font-size: 20px;
+                        }
+    
+                        >p{
+                            top: 400px;
+                            width: 300px;
+                            margin-left: -150px;
+                            font-size: 14px;
+                            line-height: 1.8;
+                        }
+                    }
+
+                }
+            }//.visual
+
+            >.intro{
+                padding-top: 80px;
+                
+                >h3{
+                    position: relative;
+                    margin-bottom: 56px;
+                    font-size: 32px;
+                    text-align: center;
+                    font-weight: 500;
+
+                    &:before{
+                        display: block;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 48px;
+                        height: 86px;
+                        background-image: url(./../images/deocBlockTransparent.png);
+                        content: '';
+                    }
+
+                    &:after{
+                        display: block;
+                        position: absolute;
+                        right: 0;
+                        top: 180px;
+                        width: 58px;
+                        height: 156px;
+                        background-image: url(./../images/decoBlockBlue.png);
+                        content: '';
+                    }
+                }
+
+                >p{
+                    width: 664px;
+                    margin: 0 auto 80px;
+                    line-height: 30px;
+                    // border: 1px solid #000;
+
+                    >span{
+                        display: block;
+                        margin-bottom: 30px;
+                    }
+
+                    >strong{font-weight: 400;}
+                }
+
+                >.program{
+                    display: flex;
+                    justify-content: space-between;
+                    >h4{
+                        width: 40%;
+                        align-self: flex-end;
+                        text-align: right;
+                    }
+
+                    >ol{
+
+                        position: relative;
+                        width: 55% ;
+                        height: 382px;
+                        background-image: url(./../images/aboutme/desk.png);
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        
+                        >li{
+                            position: absolute;
+                            width: 70px;
+                            height: 70px;
+                            text-indent: -9999px;
+                            background-position: center center;
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            
+                            &:nth-child(1){
+                                left: 55px;
+                                top: 35px;
+                                background-image: url(./../images/aboutme/skill/html5.png);
+                            }
+                            &:nth-child(2){
+                                left: 195px;
+                                top: 35px;
+                                background-image: url(./../images/aboutme/skill/css3.png);
+                            }
+                            &:nth-child(3){
+                                left: 325px;
+                                top: 35px;
+                                background-image: url(./../images/aboutme/skill/js.png);
+                            }
+                            &:nth-child(4){
+                                left: 55px;
+                                top: 125px;
+                                background-image: url(./../images/aboutme/skill/sass.png);
+                            }                            
+                            &:nth-child(5){
+                                left: 165px;
+                                top: 125px;
+                                background-image: url(./../images/aboutme/skill/emmet.png);
+                            }                            
+                            &:nth-child(6){
+                                left: 260px;
+                                top: 125px;
+                                width: 140px;
+                                background-image: url(./../images/aboutme/skill/jquery.png);
+                                background-size: cover;
+                            }  
+                            &:nth-child(7){
+                                left: 55px;
+                                top: 215px;
+                                background-image: url(./../images/aboutme/skill/psd.png);
+                            }                                                         
+                            &:nth-child(8){
+                                left: 195px;
+                                top: 215px;
+                                background-image: url(./../images/aboutme/skill/ai.png);
+                            }   
+                            
+                            &:nth-child(9){
+                                left: 325px;
+                                top: 215px;
+                                background-image: url(./../images/aboutme/skill/xd.png);
+                            }                                             
+                            
+                            &:nth-child(10){
+                                left: 45px;
+                                top: 300px;
+                                background-image: url(./../images/aboutme/skill/vscode.png);
+                            }                                                    
+                            &:nth-child(11){
+                                left: 145px;
+                                top: 300px;
+                                background-image: url(./../images/aboutme/skill/ppt.png);
+                            }                                                      
+                            &:nth-child(12){
+                                left: 240px;
+                                top: 300px;
+                                background-image: url(./../images/aboutme/skill/word.png);
+                            }                                                      
+                            &:nth-child(13){
+                                left: 335px;
+                                top: 300px;
+                                background-image: url(./../images/aboutme/skill/hwp.png);
+                            }                                                            
+                        }
+                    }
+                }//.program
+
+                >.ability{
+                    margin-top: 120px;
+                    >h4{      
+                        margin-bottom: 80px;                 
+                        font-weight: 400;
+                        font-size: 28px;
+                        line-height: 48px;
+                        text-align: center;
+                        >span{
+                            display: block;
+                        }
+                    }
+
+                    >ol{
+                        display: flex;
+                        justify-content: space-between;
+
+                        >li{
+                            display: flex;
+                            flex-flow: column nowrap;
+                            justify-content: center;
+                            width: 45%;
+                            height: 150px;
+                            padding-left: 180px;
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            box-sizing: border-box;
+
+                            >h5{
+                                margin-bottom: 30px;
+                                font-weight: 400;
+                                font-size: 20px;
+                            }
+
+                            >p{
+                                line-height: 1.6;
+                            }
+                        }
+                    }
+
+                    &.ability-1>ol>li:first-child{
+                        background-image: url(./../images/aboutme/aboutmePic01.png);
+                        // border: 1px solid #000;
+                    }
+                    &.ability-1>ol>li:last-child{
+                        background-image: url(./../images/aboutme/aboutmePic02.png);
+                        // border: 1px solid #000;
+                    }
+
+                    &.ability-2>ol>li:first-child{
+                        background-image: url(./../images/aboutme/aboutmePic03.png);
+                        // border: 1px solid #000;
+                    }
+                    &.ability-2>ol>li:last-child{
+                        background-image: url(./../images/aboutme/aboutmePic04.png);
+                        // border: 1px solid #000;
+                    }
+                }//.ability
+            }//.intro
+
+            >.skill{
+                margin-top: 100px;
+                padding:70px 0 30px;
+                background-color:#222;
+                color:#fff;
+
+                >h3{text-align: center;}
+
+                //스틱능력치
+                >.skill-stick{
+                    display:flex;
+                    justify-content:space-around;
+
+                    >.skill-stick-container{
+                        width:43%;
+
+                        >.item{
+                            margin-bottom:40px;
+                            display: flex;
+
+                            >h4{
+                                width:17%;
+                                height:10px;
+                                padding-right:8%;
+                                color:#fff;
+                                font-weight:600;
+                                font-size:18px;
+                                line-height:10px;
+                                text-align:right;
+                            }
+
+                            >.progress{
+                                position:relative;
+                                width:75%;
+                                height:10px;
+                                background-color:#3a4149;
+                                border-radius:3px;
+
+                                >.bar{
+                                    height:100%;
+                                    width:0;/*js에서 동적으로 할당*/
+                                    background-color:#68c3a3;
+                                    transition:all 2s ease-in-out;
+
+                                    >span{
+                                        position:absolute;
+                                        top:-20px;
+                                        right:15px;
+                                    }
+                                }        
+                                
+                                // &:hover>.bar{width:100%;}
+                            }
+                        }//.item
+                    }
+                }//.skill-stick
+
+
+                >.skill-piechart{
+                    display:flex;
+                    justify-content:space-around;
+                    margin-top:40px;
+
+                    >.item{
+                        width:140px;
+                        height:200px;
+
+                        >.chart{
+                            position:relative;
+                            width:140px;
+                            height:140px;
+                            text-align:center;
+
+                            //파이차트 플러그인에서 반드시 요구하는 CSS코드
+                            canvas{
+                                position:absolute;
+                                left:0;
+                                top:0;
+                            }
+
+                            >.percent{
+                                font-weight:500;
+                                font-size:25px;
+                                line-height:140px;
+
+                                &:after{content:'%';}
+                            }
+
+                            >.tit{
+                                height:60px;
+                                color:#ffc90E;
+                                font-size:18px;
+                                line-height:60px;
+                            }
+                        }
+                    }
+                }//.skill-piechart
+            }//.skill
+
+            >.resume{
+                padding-top: 96px;
+                >div{
+                    padding:0 30px;
+                    display: flex;
+                    justify-content: space-around;
+
+                    >.frame{
+                        display: block;
+                        width: 520px;
+                        height: 340px;
+                        >img{
+                            display: block;
+                            width: 100%;
+                            box-shadow: 1px 1px 5px #ccc;
+                        }
+                    }
+
+                    >.iam{
+                        display: flex;
+                        flex-flow: column nowrap;
+                        justify-content: space-between;
+
+                        >p{
+                            line-height: 26px;
+                            >span{display: block;}
+                        }
+
+                        >a{
+                            display: block;
+                            width: 260px;
+                            height: 40px;
+                            color: #fff;
+                            line-height: 40px;
+                            letter-spacing: 1px;
+                            text-align: center;
+                            background-color: #222;
+
+                            &:hover{background-color: #52b3d9;}
+                        }
+                    }
+                }
+            }//.resume
+
+            >.workstyle{
+                width: 100%;
+                margin-top: 104px;
+                background-color:#777;
+
+                >.container{
+                    position:relative;
+                    width: 1100px;
+                    height:120px;
+                    margin: 0 auto;
+
+                    &:after{
+                        display:block;
+                        position:absolute;
+                        left:120px;
+                        top:20px;
+                        width:67px;
+                        height:60px;
+                        background-image:url(../images/aboutme/audio.gif);
+                        content:'';                    
+                    }
+
+                    >ol{
+                        position:absolute;
+                        left:130px;
+                        top:15px;
+                        width:560px;
+                        height:105px;
+
+                        &:before,
+                        &:after{
+                            display:block;
+                            position:absolute;
+                            width:500px;
+                            margin-left:300px;
+                            color:#fff;	
+                            font-weight:300;  
+                            font-size:1.5em; 
+                        }
+
+                        &:before{
+                            left:55%;
+                            top:20px;
+                            letter-spacing:0.1em;
+                            content:'하는';
+                        }
+
+                        &:after{
+                            left:60%;
+                            top:60px;
+                            letter-spacing:0.1em;
+                            content:'코딩 스타일을 좋아합니다!';
+                        }
+                        >li{
+                            color:#fff;	
+                            font-weight:400;   
+                            font-size: 1.2em;
+                            text-align: right;
+                            letter-spacing: 0.1em;
+                            >span{
+                                color:gold;
+                                font-weight:300;
+                                line-height: 30px; 
+                            }
+                        }
+                    }
+
+                }//.container
+            }//.workstyle
+
+            >.talk{
+                margin-top: 72px;
+                background-image: url(./../images/aboutme/bg_talk.png);
+                background-size: cover;
+
+                >h3{
+                    padding: 64px 0;
+                    color: #fff;
+                    font-weight: 500;
+                    font-size: 32px;
+                    text-align: center;
+                }
+
+                >ul{
+                    display:flex;
+                    justify-content: space-evenly;
+
+                    >li{
+                        position: relative;/*기준점 설정*/
+                        width: 30%;
+                        min-width: 155px;
+                        min-height: 400px;
+                        margin-bottom: 20px;
+                        padding: 0 2%;
+                        background-color: #fff;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                        box-sizing: border-box;
+                          /* flex:1 1 0; */
+
+                        >h4{
+                        position: absolute;
+                        left: 50%;
+                        top: 140px;
+                        margin-left: 30px;
+                        padding: 5px 10px 5px 30px;
+                        color: #fff;
+                        letter-spacing: 3px;
+                        white-space: nowrap;/*자동줄바꿈 안됨*/
+                        background-color: #68c3a3;
+
+                        &:after{   
+                            display: block;
+                            position: absolute;
+                            left: -105px;
+                            top: -115px;
+                            width: 150px;
+                            height: 150px; 
+                            background-size: cover;                           
+                            background-repeat: no-repeat;
+                            border-radius: 50%;
+                            content: '';
+                            }
+                        }
+                        
+                        &:nth-child(1)>h4:after{
+                            background-image: url(../images/aboutme/friend-1.jpg);
+                        }
+
+                        &:nth-child(2)>h4:after{   
+                            background-image: url(../images/aboutme/friend-2.jpg);
+                        }
+
+                        &:nth-child(3)>h4:after{   
+                            background-image: url(../images/aboutme/friend-3.jpg);
+                        }
+
+                        >strong{
+                            display: block;
+                            margin: 180px 0 30px;
+                            font-size: 15px;
+                            text-align: center;
+                         
+                            /* 한줄로 처리하는 CSS구문 3종세트*/
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+
+                        >p{
+                            line-height: 1.8;
+                            text-align: center;
+                        }
+
+                    }//li
+                }
+            }
+        }//&#aboutme
+
+
+        &#portfolio{
+            // background-image: url(./../images/portfolio/bg_pofol.png);
+            // background-size: cover;
+
+            >article{
+                width: 1100px;
+                margin: 0 auto;
+            }
+            
+            >.slides{
+                
+                >.slides-pagination{
+                    display: flex;
+                    justify-content: space-around;
+                    width: 840px;
+                    margin: 0 auto 96px;
+
+                    >li{
+                        width: 120px;
+
+                        >a{
+                            display: block;
+                            height: 40px;
+                            font-weight: 400;
+                            font-size: 14px;
+                            line-height: 40px;
+                            text-align: center;
+                            border: 1px solid #aaa;
+                            border-radius: 20px;
+                            
+                            &:hover{
+                                color: #fff;
+                                background-color: #68c3a3;
+                            }
+                        }                        
+                        
+                        &.on>a{                            
+                            color: #fff;
+                            background-color: #68C3A3;
+                        }
+                        
+                    }
+                }//.slides-pagination
+
+                >.slides-container{
+                    position: relative;
+                    width: 100%;
+                    height: 380px;
+
+                    >figure{
+                        display: none;
+                        justify-content: space-between;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        
+                        &:nth-child(1){display: flex;}
+                        
+                        >figcaption{
+                            width: 400px;
+                            padding-top: 35px;
+                            >h3{
+                                color: #52b3d9;
+                                font-weight: 500;
+                                font-size: 20px;
+                                line-height: 24px;
+                            }
+                            >.tip{
+                                margin-top: 8px;
+                                color: #909090;
+                                font-size: 16px;                               
+                            }
+                            >.desc,
+                            >.tools,
+                            >.etc{
+                                margin-top: 20px;
+                                color: #404040;
+                                font-size: 13px;
+                                font-weight: 400;
+                                line-height: 24px;                                
+                            }
+
+                            >.tools,
+                            >.etc{
+                                margin-top: 20px;
+                            }
+
+                            >.btn{
+                                display: flex;
+
+                                >a{
+                                    display: block;
+                                    width: 132px;
+                                    height: 40px;
+                                    margin-top: 30px;
+                                    font-weight: 400;
+                                    font-size: 15px;
+                                    line-height: 38px;
+                                    letter-spacing: 2px;
+                                    text-align: center;
+                                    color: #222;
+                                    background-color: #dedede;
+                                    border-radius: 50px;
+                                    box-sizing: border-box;
+                                    transition: ease-out 0.2s;
+
+                                    &.proc{margin-right: 10px;}
+
+                                    &:hover{
+                                        color: #fff;
+                                        background-color: #52b3d9;
+                                    }
+                                }//a    
+                            }//.btn
+                        }//figcaption
+
+                        >.frame{
+                            display: block;
+                            position: relative;
+                            width: 700px;
+                            height: 380px;
+                            background-image: url(./../images/portfolio/bg_macbook.png);
+                            >img{
+                                position: absolute;
+                                left: 76px;
+                                top: 27px;
+                                width: 553px;                              
+                            }
+                        }
+
+                    }
+                }    
+            }//.slides
+
+            >.intro{
+                width: 100%;
+                background-image: url(./../images/portfolio/bg_pofol.png);
+                background-size: cover;
+                
+                .container{
+                    width: 1100px;
+                    margin: 0 auto;
+                    padding: 80px 0;                
+                    
+                    >h3{
+                        position: relative;
+                        margin-bottom: 56px;
+                        font-size: 32px;
+                        text-align: center;
+                        font-weight: 500;
+    
+                        &:before{
+                            display: block;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 48px;
+                            height: 86px;
+                            background-image: url(./../images/deocBlockTransparent.png);
+                            content: '';
+                        }
+    
+                        &:after{
+                            display: block;
+                            position: absolute;
+                            right: 0;
+                            top: 180px;
+                            width: 58px;
+                            height: 156px;
+                            background-image: url(./../images/decoBlockBlue.png);
+                            content: '';
+                        }
+                    }
+    
+                    >p{
+                        width: 664px;
+                        margin: 0 auto 80px;
+                        line-height: 30px;
+                        // border: 1px solid #000;
+    
+                        >span{
+                            display: block;
+                            margin-bottom: 30px;
+                        }
+    
+                        >strong{font-weight: 400;}
+                    }
+    
+                    >.coding{
+                        >h4{
+                            overflow: hidden;
+                            position: relative;
+                            width: 90%;
+                            height: 300px;
+                            margin-bottom: 104px;
+                            // border: 1px solid #000;
+    
+                            >span{
+                                position: absolute;
+                                left: 240px;
+                                bottom: 0;
+                            }
+    
+                            &:after{
+                                display: block;
+                                position: absolute;
+                                right: 35px;
+                                bottom: 0;
+                                z-index: -1;
+                                width: 470px;
+                                height: 300px;
+                                background-image: url(./../images/portfolio/code01.png);
+                                content: '';
+                            }
+    
+    
+                            >.circle{
+                                position: absolute;
+                                left: 95%;
+                                bottom: 0px;                            
+    
+                                >.ring{
+                                    // display: none;
+                                    position: absolute;
+                                    border: 2px solid #52b3d9;
+                                    border-radius: 200px;
+        
+                                    &.ring_1{
+                                        left: 0;
+                                        top: 0px;
+                                        width: 45px;
+                                        height: 45px;
+                                        opacity: 0.7;
+                                    }
+        
+                                    &.ring_2{
+                                        left:-16px;
+                                        top: -16px;
+                                        width: 77px;
+                                        height: 77px;
+                                        opacity: 0.6;
+                                    }
+        
+                                    &.ring_3{
+                                        left:-32px;
+                                        top: -32px;
+                                        width: 109px;
+                                        height: 109px;
+                                        opacity: 0.5;
+                                    }
+        
+                                    &.ring_4{
+                                        left:-48px;
+                                        top: -48px;
+                                        width: 141px;
+                                        height: 141px;
+                                        opacity: 0.4;
+                                    }
+        
+                                    &.ring_5{
+                                        left:-64px;
+                                        top: -64px;
+                                        width: 173px;
+                                        height: 173px;
+                                        opacity: 0.3;
+                                    }
+        
+                                    &.ring_6{
+                                        left:-80px;
+                                        top: -80px;
+                                        width: 205px;
+                                        height: 205px;
+                                        opacity: 0.2;
+                                    }
+        
+                                    &.ring_7{
+                                        left:-96px;
+                                        top: -96px;
+                                        width: 237px;
+                                        height: 237px;
+                                        opacity: 0.1;
+                                    }
+                                }
+                            }//.circle
+    
+                        }
+    
+                        >div{
+                            position: relative;
+                            height: 436px;
+                            padding-left: 550px;
+                            background-image: url(./../images/portfolio/code02.png);
+                            background-position: 50px 0;
+                            background-repeat: no-repeat;
+                            box-sizing: border-box;
+    
+                            >h4{
+                                padding: 30px 0;
+                                font-size: 32px;
+                            }
+    
+                            >p{
+                                line-height: 30px;
+                                >span{
+                                    display: block;
+                                    margin-bottom: 30px;
+                                }
+                            }
+    
+                            >.circle{
+                                position: absolute;
+                                left: 380px;
+                                top: 40px;
+    
+                                >.ring{
+                                    // display: none;
+                                    position: absolute;
+                                    border: 2px solid #52b3d9;
+                                    border-radius: 200px;
+        
+                                    &.ring_1{
+                                        left: 0;
+                                        top: 0px;
+                                        width: 45px;
+                                        height: 45px;
+                                        opacity: 0.7;
+                                    }
+        
+                                    &.ring_2{
+                                        left:-6px;
+                                        top: -6px;
+                                        width: 57px;
+                                        height: 57px;
+                                        opacity: 0.6;
+                                    }
+        
+                                    &.ring_3{
+                                        left:-12px;
+                                        top: -12px;
+                                        width: 69px;
+                                        height: 69px;
+                                        opacity: 0.5;
+                                    }
+        
+                                    &.ring_4{
+                                        left:-18px;
+                                        top: -18px;
+                                        width: 81px;
+                                        height: 81px;
+                                        opacity: 0.4;
+                                    }
+        
+                                    &.ring_5{
+                                        left:-24px;
+                                        top: -24px;
+                                        width: 93px;
+                                        height: 93px;
+                                        opacity: 0.3;
+                                    }
+        
+                                    &.ring_6{
+                                        left:-30px;
+                                        top: -30px;
+                                        width: 105px;
+                                        height: 105px;
+                                        opacity: 0.2;
+                                    }
+        
+                                    &.ring_7{
+                                        left:-36px;
+                                        top: -36px;
+                                        width: 117px;
+                                        height: 117px;
+                                        opacity: 0.1;
+                                    }
+                                }
+                            }//.circle
+                            
+    
+                        }
+    
+                        
+                    }
+                }
+                
+
+            }//.intro       
+            
+            >.works{
+                position: relative;
+                width: 1280px;
+                margin: 0 auto;
+                // border: 1px solid #000;
+                >h3{
+                    position: relative;
+                    width: 300px;
+                    margin: 0 auto 56px;
+                    padding-bottom: 8px;
+                    font-weight: 500;
+                    font-size: 32px;
+                    text-align: center;
+                    border-bottom: 2px solid #f0f0f0;
+                }
+
+                >.slide-list{
+                    // position: absolute;
+                    top: 977px;
+                    display: flex;
+                    justify-content: space-between;
+                    //width: 1100px;
+
+                    >li{
+                        position: relative;
+                        width: 384px;
+                        height: 620px;
+                        background-color: #fff;
+                        box-shadow: 0 7px 20px 0 rgba(182, 245, 206, 0.2);
+                        padding: 48px 0 0 65px;
+                        box-sizing: border-box;
+
+                        >h4{
+                            color: #454249;
+                            font-size: 20px;
+                            font-weight: 500;
+                            padding-bottom: 36px;                            
+                        }
+
+                        >p{
+                            color: #65616b;
+                            font-size: 16px;
+                            line-height: 24px;  
+                            
+                            >.tip{
+                                display: block;
+                                color: #ccc;
+                                font-size: 13px;
+                                padding-top: 20px;
+                            }
+
+                            >.proc{
+                                display: block;
+                                width: 180px;
+                                height: 46px;
+                                margin: 20px 0 30px;
+                                color: #fff;
+                                font-size: 18px;
+                                line-height: 46px;
+                                text-align: center;
+                                background-color: #68c3a3;
+                                border: 1px solid #68c3a3;
+                                border-radius: 5px;
+                                box-shadow: inset 0 0 0 0 #454249;
+                                transition: ease-out 0.3s;      
+                              
+                                &:hover {
+                                  box-shadow: inset 180px 0 0 0 #454249;
+                                }                                
+                            }
+
+                            >.frame{
+                                display: block;
+                                width: 321px;
+                                margin-left: -35px;
+
+                                >img{
+                                    display: block;
+                                    width: 100%;
+                                }
+
+                                >.btn{
+                                    display: block;
+                                    position: absolute;
+                                    right: 0;
+                                    bottom: 40px;
+                                    width: 194px;
+                                    height: 65px;
+                                    color: #fff;
+                                    font-size: 18px;
+                                    line-height: 65px;
+                                    text-align: center;
+                                    background-color: #444;
+                                    border: 2px solid #444;
+                                  
+                                    &:hover {
+                                      color: #68c3a3;
+                                      border-color: #68c3a3;
+                                      background-color: #fff;
+                                      transition: ease-out 0.3s;
+                                    }                                
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+
+        }//#portfolio
+
+
+        &#uxdesign{
+
+            article{
+                width: 1100px;
+                margin: 0 auto;                
+            }
+
+            >.slides{
+                overflow: hidden;
+                position: relative;
+                height: 576px;
+
+                >.slides-container{
+                    display: flex;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: calc(1180px * 5);
+
+                    >li{
+                        width: 1100px;
+                        height: 620px;
+                        text-indent: -9999px;
+                        background-position: center center;
+                        background-size: cover;
+
+                        &.banner_1{background-image: url(../images/uxdesign/slides/slide_1.png);}
+                        &.banner_2{background-image: url(../images/uxdesign/slides/slide_2.jpg);}
+                        &.banner_3{background-image: url(../images/uxdesign/slides/slide_3.jpg);}
+                        &.banner_4{background-image: url(../images/uxdesign/slides/slide_4.jpg);}
+                        &.banner_5{background-image: url(../images/uxdesign/slides/slide_5.jpg);}
+                    }
+                }
+
+                >.slides-pagination{
+                    display: flex;
+                    justify-content: space-between;
+                    position: absolute;
+                    left: 50%;
+                    bottom: 15px;
+                    width: 110px;
+                    margin-left: -55px;
+
+                    >li{
+                        float: left;
+                        margin-right: 5px;
+                        width: 18px;
+                        background-image: url(../images/uxdesign/slides/bul.png);
+
+                        &:hover,
+                        &.on{
+                            background-position: 0 -18px;
+                        }
+
+                        >a{
+                            display: block;
+                            height: 18px;
+                            text-indent: -9999px;
+                        }
+                    }
+                }
+
+                >a{
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    width: 80px;
+                    height: 100px;    
+                    margin-top: -50px;
+                    text-indent: -9999px;
+                    background-image: url(./../images/uxdesign/slides/btn_navigation.png);
+                    background-repeat: no-repeat;
+
+                    &.prev{
+                        left: 0;
+                        background-position: -5px -225px;
+                    }
+
+                    &.next{
+                        right: 0;
+                        background-position: -5px -5px;
+                    }
+
+                    &.prev:hover,
+                    &.prev.on{
+                        left: 0;
+                        background-position: -5px -335px;
+                    }
+
+                    &.next:hover,
+                    &.next.on{
+                        right: 0;
+                        background-position: -5px -115px;
+                    }
+
+                }
+            }//.slides
+
+
+            >.intro{
+                padding: 80px 0 104px;
+                
+                >h3{
+                    position: relative;
+                    margin-bottom: 56px;
+                    font-size: 32px;
+                    text-align: center;
+                    font-weight: 500;
+
+                    &:before{
+                        display: block;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 48px;
+                        height: 86px;
+                        background-image: url(./../images/deocBlockTransparent.png);
+                        content: '';
+                    }
+
+                    &:after{
+                        display: block;
+                        position: absolute;
+                        right: 0;
+                        top: 180px;
+                        width: 58px;
+                        height: 156px;
+                        background-image: url(./../images/decoBlockBlue.png);
+                        content: '';
+                    }
+                }
+
+                >p{
+                    width: 664px;
+                    margin: 0 auto 80px;
+                    line-height: 30px;
+                    // border: 1px solid #000;
+
+                    >span{
+                        display: block;
+                        margin-bottom: 30px;
+                    }
+
+                    >strong{font-weight: 400;}
+                }
+
+                >.bus-alarm{
+                    display: flex;
+                    // justify-content: space-between;
+                    >h4{
+                        width: 43%;
+                        align-self: flex-end;
+                        text-align: right;
+                        margin-right: 20px;
+                    }
+
+                    >.frame{
+                        width: 527px;
+                        >img{
+                            display: block;
+                            width: 100%;
+                        }
+                    }
+                }//.bus-alarm
+            }//.intro
+
+            >.uxui{
+                position: relative;
+                padding-bottom: 104px;
+                
+                >h3{
+                    position: relative;
+                    width: 330px;
+                    margin: 0 auto 156px;
+                    padding-bottom: 8px;
+                    font-weight: 500;
+                    font-size: 32px;
+                    text-align: center;
+                    border-bottom: 2px solid #f0f0f0;
+
+                    &:before,
+                    &:after{
+                        display: block;
+                        position: absolute;
+                        top: 130px;
+                        color: #45af8e;
+                        font-size: 36px;
+                        font-weight: 800;
+                        transition: ease-out 0.3s;                           
+                    }
+
+                    &:before{
+                        left: 50%;
+                        margin-left: -200px;                     
+                        content: 'UI';
+                    }
+
+                    &:after{
+                        right: 50%;
+                        margin-right: -200px;
+                        content: 'UX';
+                    }
+                }//h3
+
+                > .uxui-case {
+                    display: flex;
+                    position: relative;
+                    height: 280px;
+
+                    > .ui-frame {
+                        display: block;
+                        position: absolute;
+                        left: 50%;
+                        width: 420px;
+                        height: 280px;
+                        margin-left: -420px;
+                        transition: ease-out 0.3s;
+                        z-index: 300;
+              
+                        > img {
+                          display: block;
+                          width: 100%;
+                          height: 100%;
+                          border-radius: 140px 0 0 140px;
+                        }
+                    } // end of p.ui-frame
+            
+                    > .ux-frame {
+                    display: block;
+                    position: absolute;
+                    right: 50%;
+                    width: 420px;
+                    height: 280px;
+                    margin-right: -420px;
+                    transition: ease-out 0.3s;
+                    z-index: 300;
+            
+                    > img {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 0 140px 140px 0;
+                        }
+                    } // end of p.ux-frame
+
+                    &:hover {
+                        > .ui-frame {
+                          left: 0;
+                          margin-left: 0;
+                          transition: ease-out 0.3s;
+                        }
+              
+                        > .ux-frame {
+                          right: 0;
+                          margin-right: 0;
+                          transition: ease-out 0.3s;
+                        }
+                    }
+
+                    > dl {
+                        width: 40%;
+                        height: 280px;
+                        margin: 0 auto;
+                        padding-top: 80px;
+                        text-align: center;
+                        background-color: #dbdbdb;
+                        box-sizing: border-box;
+              
+                        > dt {
+                          color: #404040;
+                          font-size: 22px;
+                          font-weight: 600;
+                        }
+              
+                        > dd {
+                            margin-top: 30px;
+                            color: #404040;
+                            font-size: 13px;
+                            line-height: 24px;
+                        }
+                    } // end of dl  
+                    
+                    &:nth-of-type(2){
+                        margin-top: 30px;
+                    }
+                }//.uxui-case            
+            }//.uxui
+
+            >.fivewhys{
+        
+                >h3{
+                    position: relative;
+                    margin-bottom: 10px;
+                    font-weight: 500;
+                    font-size: 20px;
+                    line-height: 2;
+
+                    &:nth-of-type(1):after{
+                        display: block;
+                        height: 240px;
+                        background-image: url(./../images/uxdesign/5whys.jpg);
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        content: '';
+                    }
+
+                    &:nth-of-type(2){
+                        margin: 20px 0 0 0;
+                        color: #68c3a3;
+                    }
+                }//h3  
+                
+                .analysis{
+                    display: flex;
+                    justify-content: space-between;
+
+                    >div{
+                        width: 19%;
+                        padding-top: 20px;
+
+                        >h4{
+                            padding-bottom: 5px;
+                            border-bottom: 2px solid #ccc;
+                        }
+
+                        >p{
+                            margin-top: 10px;
+                            line-height: 1.6;
+                        }
+                    }
+                }
+            }
+
+        }//#uxdesign
+    
+
+        &#uidesign{
+            width: 1100px;
+            margin: 0 auto;
+            
+
+            >.gallery{
+                display: flex;
+                justify-content: flex-end;
+                padding: 80px 50px;
+                background-image: 
+                    url(./../images/uidesign/gallery/mino-main.png),url(./../images/uidesign/gallery/mino-bg.png);
+                
+                background-position: 60px 230px, 0 0 ;
+                background-size: 380px auto,cover;
+                background-repeat: no-repeat;
+                
+                >.gallery-container{
+                    display: flex;
+                    flex-flow: column nowrap;
+                    align-items: center;
+                    width: 500px;
+                    
+                    >.gallery-thmbs{
+                        display: flex;
+                        flex-flow: row wrap;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 555px;
+                        height: 200px;
+                        order: 100;
+                        
+                        >li{
+                            display: block;
+                            width: 133px;
+                            height: 93px;
+                            background-size: cover;
+                            background-repeat: no-repeat;
+    
+                            &.on,
+                            &:hover{
+                                border: 5px solid #b73523;
+                                box-sizing: border-box;
+                                border-radius: 10px;
+                            }
+    
+                            >a{
+                                display: block;
+                                height: 93px;
+                                text-indent: -9999px;
+                            }
+    
+                            &:nth-child(1){background-image: url(./../images/uidesign/gallery/mino_thmb-01.png);}
+                            &:nth-child(2){background-image: url(./../images/uidesign/gallery/mino_thmb-02.png);}
+                            &:nth-child(3){background-image: url(./../images/uidesign/gallery/mino_thmb-03.png);}
+                            &:nth-child(4){background-image: url(./../images/uidesign/gallery/mino_thmb-04.png);}
+                            &:nth-child(5){background-image: url(./../images/uidesign/gallery/mino_thmb-05.png);}
+                            &:nth-child(6){background-image: url(./../images/uidesign/gallery/mino_thmb-06.png);}
+                            &:nth-child(7){background-image: url(./../images/uidesign/gallery/mino_thmb-07.png);}
+                            &:nth-child(8){background-image: url(./../images/uidesign/gallery/mino_thmb-08.png);}
+                            
+                        }
+                        
+    
+                    }//gallery-thmbs
+    
+                    >.gallery-screen{
+                        width: 100%;
+                        height: 350px;
+                        margin-bottom: 20px;
+                        text-indent: -9999px;
+                        background-image: url(./../images/uidesign/gallery/mino-01.png);
+                        background-position: 50% 50%;
+                        background-size: cover;
+                        border: 8px solid #311c0f;
+                        border-radius: 20px;
+                    }
+
+                }
+
+            }//.gallery
+
+
+            >.intro{
+                padding-top: 80px;
+                
+                >h3{
+                    position: relative;
+                    margin-bottom: 56px;
+                    font-size: 32px;
+                    text-align: center;
+                    font-weight: 500;
+
+                    &:before{
+                        display: block;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 48px;
+                        height: 86px;
+                        background-image: url(./../images/deocBlockTransparent.png);
+                        content: '';
+                    }
+
+                    &:after{
+                        display: block;
+                        position: absolute;
+                        right: 0;
+                        top: 180px;
+                        width: 58px;
+                        height: 156px;
+                        background-image: url(./../images/decoBlockBlue.png);
+                        content: '';
+                    }
+                }
+
+                >p{
+                    width: 664px;
+                    margin: 0 auto 80px;
+                    line-height: 30px;
+                    // border: 1px solid #000;
+
+                    >span{
+                        display: block;
+                        margin-bottom: 30px;
+                    }
+
+                    >strong{font-weight: 400;}
+                }
+
+                >.bus-alarm{
+                    display: flex;
+                    // justify-content: space-between;
+                    >h4{
+                        width: 43%;
+                        align-self: flex-end;
+                        text-align: right;
+                        margin-right: 20px;
+                    }
+
+                    >.frame{
+                        width: 527px;
+                        >img{
+                            display: block;
+                            width: 100%;
+                        }
+                    }
+                }//.bus-alarm
+
+                >.frame{
+                    width: 1100px;
+                    margin-top: 50px;
+
+                    >img{
+                        display: block;
+                        width: 100%;
+                    }
+                }
+                
+            }//.intro
+
+        }//#uidesign
+
+
+        &#project{
+
+            >h3{
+                position: relative;
+                margin-bottom: 20px;
+                font-size: 32px;
+                text-align: center;
+                font-weight: 500;
+
+            }
+
+            >.frame{
+                width: 1100px;
+                margin:0 auto 50px;
+
+                >img{
+                    display: block;
+                    width: 100%;
+                }
+            }            
+        }//#project
+    }
+
+    header~section{}
+
+    footer{
+        width: 100%;
+        min-width: 1100px;
+
+        >article.working{
+            margin-top: 20px;
+            border-top: 1px solid #aaa;
+
+            >p{
+                width: 1100px;
+                margin: 0 auto;
+                text-indent: 50px;
+                line-height: 80px;
+
+                >a{
+                    margin: 0 30px;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        >article.info{
+            background-color: #222;
+            >.container{
+                position: relative;//푸터로고에 대한 기준점
+                width: 1100px;
+                margin: 0 auto;
+                padding: 45px 0 20px;
+
+                >h2,
+                >p{
+                    margin-bottom: 15px;
+                    padding-left: 30px;
+                    color: #ababab;
+                    font-size: 13px;
+                }
+
+
+                >.contact>a{color:#ababab;}
+                >.contact>.bar{margin: 0 10px;}
+
+                //푸터로고
+                >h2:after{
+                    display: block;
+                    position: absolute;
+                    right: 40px;
+                    top: 50%;
+                    width: 53px;
+                    height: 68px;
+                    margin-top: -34px;
+                    background-image: url(./../images/footer_logo.png);
+                    content: '';
+                }
+            }
+        }
+    }
+    
+    aside{
+        display: none;
+        position: fixed;
+        right: 1.8em;
+        bottom: 1.8em;
+        z-index: 1000;
+    
+        >a{
+            display: block;
+            width: 28px;
+            height: 28px;
+            color: #fff;
+            font-size: 14px;
+            line-height: 28px;
+            text-align: center;
+            background-color: #68c3a3;
+    
+            &:hover{
+                color: #222;
+                background-color: rgba(235, 235, 235, 0.8);               
+            }
+        }
+    }
+    
+
+}    
+
+
