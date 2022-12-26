@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+#wrap {
+  margin: 0 auto;
+  width: 800px;
+}
+
+#wrap>.detail {
+  width: 800px;
+}
+
+#wrap>.detail>p {
+  padding: 50px 0 50px 0;
+}
+
+#wrap>.detail>p>img {
+  vertical-align: bottom;
+  border: 1px solid rgb(236, 236, 236);
+}
+
+#wrap>footer {
+  text-align: center;
+  padding-bottom: 50px;
+}
