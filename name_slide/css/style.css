@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+#wrap {
+  width: 1000px;
+  margin: 0 auto;
+}
+h1 {
+  color: #333;
+  font-size: 30px;
+}
+
+/* slide */
+.slide {
+  overflow: hidden;
+  position: relative;
+  height: 600px;
+}
+.slide > .slide-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  width: 5000px;
+}
+.slide > .slide-container > li {
+  width: 1000px;
+}
+.slide > .slide-container > li > img {
+  display: block;
+}
+
+/* indicator */
+.slide > .indicator > ol {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  width: 110px;
+  margin-left: -55px;
+}
+.slide > .indicator > ol > li {
+  width: 18px;
+  background-image: url(./../images/bul.png);
+}
+.slide > .indicator > ol > li:hover,
+.slide > .indicator > ol > li.on {
+  background-position: 0 -18px;
+}
+.slide > .indicator > ol > li > a {
+  display: block;
+  height: 18px;
+  text-indent: -9999px;
+}
+footer > address {
+  margin-top: 50px;
+  text-align: center;
+}
