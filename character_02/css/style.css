@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+#wrap {
+  margin: 0 auto;
+  width: 1200px;
+}
+
+#wrap>.detail {
+  width: 1200px;
+}
+
+#wrap>.detail>p {
+  padding: 50px 0 50px 0;
+}
+
+#wrap>.detail>p~p {
+  padding: 50px 0 50px 0;
+  border-top: 1px dotted #222;
+}
+
+#wrap>footer {
+  text-align: center;
+  padding-bottom: 50px;
+}
