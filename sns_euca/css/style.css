@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+#wrap {
+  margin: 0 auto;
+  width: 1280px;
+}
+
+#wrap>.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 50px;
+  width: 1280px;
+  height: 1280px;
+}
+
+#wrap>.card>li>img {
+  width: 600px;
+}
+
+/* #wrap>.card>li {
+  padding: 19px;
+  border-top: 1px dotted #000;
+  border-right: 1px dotted #000;
+} */
+
+#wrap>.card>.card_1 {
+  border-top: none;
+}
+
+#wrap>.card>.card_2 {
+  border-top: none;
+  border-right: none;
+}
+
+
+#wrap>footer {
+  text-align: center;
+  padding: 50px 0 50px 0;
+}
